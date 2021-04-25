@@ -18,7 +18,8 @@ func main() {
 	if err != nil {
 		if err == sql.ErrNoRows {
 			//handler this err
-			return errors.WithMessage(err, "empty result")
+			//return errors.WithMessage(err, "empty result")
+			fmt.Println("Empty result")
 
 		}
 		return err
