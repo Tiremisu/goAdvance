@@ -13,12 +13,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var id int
+	id := 1
 	err := db.QueryRow("select id from Person").Scan(&id)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			//handler this err
-			return errors.WithMessage(err, "You should init id row first")
+			return errors.WithMessage(err, "empty result")
 
 		}
 		return err
