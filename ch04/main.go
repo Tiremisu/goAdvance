@@ -12,8 +12,7 @@ import(
 
 func main() {
 	http.HandleFunc("/", home) //DefaultServeMutex
-	//start a http server
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	
 
 	//register a rpc service
 	arith := new(server.Arith)
@@ -36,7 +35,10 @@ func main() {
 	if err != nil {
 		log.Fatal("arith error: ", err)
 	}
-	fmt.Printf("Arith: %d*%d=%d", args.A, args.B, reply)
+	fmt.Printf("Arith: %d*%d=%d \n", args.A, args.B, reply)
+
+	//start a http server
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
