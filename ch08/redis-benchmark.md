@@ -1,8 +1,10 @@
 ```
 redis-benchmark -t set|get -n 100000 -q -d 10 --csv
+redis-cli flushall
+redis-cli info memory | grep dataset
 redis-benchmark -t set -r 100000 -n 50000 -d 5000 --csv
 redis-cli dbsize
-redis-cli info memory  ##62488
+redis-cli info memory | grep dataset
 ```
 
 "test","rps","avg_latency_ms","min_latency_ms","p50_latency_ms","p95_latency_ms","p99_latency_ms","max_latency_ms"
